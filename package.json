@@ -1,6 +1,6 @@
 {
   "name": "type-wechaty",
-  "version": "1.18.9",
+  "version": "1.18.10",
   "description": "Wechaty conversational SDK getting start template & examples",
   "type": "module",
   "engines": {
