@@ -20,7 +20,7 @@ import type { MessageActions, Action } from './types/messageActionsSchema'
 
 const bot = WechatyBuilder.build({
   name: 'type-wechaty',
-  puppet: 'wechaty-puppet-wechat',
+  puppet: 'wechaty-puppet-wechat4u',
   puppetOptions: {
     uos: true,
   },
@@ -52,40 +52,85 @@ function onLogout (user: Contact) {
 async function onMessage (msg: Message) {
   log.info('StarterBot', msg.toString())
   const text = msg.text()
+  const talker = msg.talker()
+  const talkerName = talker.name()
+  const room = msg.room()
+  const topic = await room?.topic()
+  const ADMIN_WX =  process.env['ADMIN_WX']
+  const ADMIN_ROOM =  process.env['ADMIN_ROOM']
+
   if (msg.text() === 'ding') {
     await msg.say('dong')
   }
-  if (text[0] === '/') {
-    const textArr = text.split(' ')
-    if (textArr[0] === '/llm') {
-      const res: MessageActions = await messageStructuring(msg.text())
-      log.info('res:', JSON.stringify(res))
-      if (res.actions.length) {
-        const textMsg:Action|undefined = res.actions[0]
-        if (textMsg?.actionType === 'sendMessage') {
-          let toUser = await bot.Contact.find({ alias:textMsg.event.contacts[0] })
-          if (toUser) {
-            toUser = await bot.Contact.find({ name:textMsg.event.contacts[0] })
+
+  if (talkerName === ADMIN_WX || (topic && topic === ADMIN_ROOM)) {
+
+    if (text[0] === '/') {
+      const textArr = text.split(' ')
+      if (textArr[0] === '/llm' && textArr.length > 1) {
+        log.info('管理员或管理群消息', talkerName, topic)
+        const res: MessageActions = await messageStructuring(text.replace('/llm', ''))
+        log.info('LLM识别结果:', JSON.stringify(res))
+
+        if (res.actions.length) {
+          const textMsg:Action|undefined = res.actions[0]
+          const successList = []
+          const failList = []
+          if (textMsg?.actionType === 'sendMessage' && textMsg.event.contacts.length) {
+            const relpText = textMsg.event.text + `\n————From:${msg.talker().name()}`
+            const contacts = textMsg.event.contacts
+            for (const i in contacts) {
+              const curContact = contacts[i]
+              let toUser = await bot.Contact.find({ alias:curContact })
+              if (!toUser) {
+                toUser = await bot.Contact.find({ name:curContact })
+              }
+              log.info('toUser:', JSON.stringify(toUser))
+              if (toUser) {
+                await toUser.say(relpText)
+                successList.push(curContact)
+              } else {
+                failList.push(curContact)
+              }
+            }
+            if (contacts.length === successList.length) {
+              await msg.say(`全部发送成功[${successList.length}]：${successList.join('、')}`)
+            } else if (contacts.length === failList.length) {
+              await msg.say(`全部发送失败[${failList.length}]：${failList.join('、')}`)
+            } else {
+              await msg.say(`发送成功[${successList.length}/${contacts.length}]：${successList.join('、')}\n发送失败[${failList.length}/${contacts.length}]：${failList.join('、')}`)
+            }
           }
-          log.info('toUser:', JSON.stringify(toUser))
-          if (toUser) {
-            await toUser.say(textMsg.event.text)
-            await msg.say('已完成')
-          } else {
-            await msg.say('未找到联系人')
-          }
-        }
-        if (textMsg?.actionType === 'sendRoomMessage') {
-          const toUser = await bot.Room.find({ topic:textMsg.event.rooms[0] })
-          if (toUser) {
-            await toUser.say(textMsg.event.text)
-            await msg.say('已完成')
-          } else {
-            await msg.say('未找到群')
+          if (textMsg?.actionType === 'sendRoomMessage' && textMsg.event.rooms.length) {
+            const relpText = textMsg.event.text + `\n————From:${msg.talker().name()}`
+            const rooms = textMsg.event.rooms
+            for (const i in rooms) {
+              const curRoom = rooms[i]
+              const toUser = await bot.Room.find({ topic:curRoom })
+
+              log.info('toUser:', JSON.stringify(toUser))
+              if (toUser) {
+                await toUser.say(relpText)
+                successList.push(curRoom)
+              } else {
+                failList.push(curRoom)
+              }
+            }
+
+            if (rooms.length === successList.length) {
+              await msg.say(`全部发送成功[${successList.length}]：${successList.join('、')}`)
+            } else if (rooms.length === failList.length) {
+              await msg.say(`全部发送失败[${failList.length}]：${failList.join('、')}`)
+            } else {
+              await msg.say(`发送成功[${successList.length}/${rooms.length}]：${successList.join('、')}\n发送失败[${failList.length}/${rooms.length}]：${failList.join('、')}`)
+            }
           }
         }
       }
     }
+
+  } else {
+    log.info('不是管理员或管理群消息', talkerName, topic)
   }
 }
 

@@ -32,7 +32,7 @@
     "qrcode-terminal": "^0.12.0",
     "typechat": "^0.0.10",
     "wechaty": "^1.18.1",
-    "wechaty-puppet-wechat": "^1.18.1"
+    "wechaty-puppet-wechat4u": "^1.14.1"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^1.0.4",

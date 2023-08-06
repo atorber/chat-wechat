@@ -29,7 +29,7 @@ export const messageStructuring = async (text: string) => {
     return response
   }
   const messageActions = response.data
-  log.info('结构化数据：\n', JSON.stringify(messageActions, undefined, 2))
+  // log.info('结构化数据：\n', JSON.stringify(messageActions, undefined, 2))
   if (messageActions.actions.some((item: { actionType: string }) => item.actionType === 'unknown')) {
     log.info('语义无匹配：\n', "I didn't understand the following:")
     for (const action of messageActions.actions) {
