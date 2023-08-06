@@ -12,6 +12,8 @@
 
 ## 快速开始
 
+> 特别注意：[typechat](https://github.com/microsoft/TypeChat)仅支持nodejs18以上，不支持nodejs16
+
 1. 重命名.env.example为.env,配置.env文件中相关信息
 
 ```.env
