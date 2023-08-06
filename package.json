@@ -1,6 +1,6 @@
 {
   "name": "type-wechaty",
-  "version": "1.18.10",
+  "version": "0.1.0",
   "description": "Wechaty conversational SDK getting start template & examples",
   "type": "module",
   "engines": {
@@ -38,13 +38,9 @@
     "@chatie/eslint-config": "^1.0.4",
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^4.6.3",
+    "@types/qrcode-terminal": "^0.12.0",
     "check-node-version": "^4.2.1",
     "is-pr": "^2.0.0",
     "ts-node": "^10.9.1"
-  },
-  "git": {
-    "scripts": {
-      "pre-push": "npx git-scripts-pre-push"
-    }
   }
 }

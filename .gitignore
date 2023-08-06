@@ -76,7 +76,6 @@ examples/.pki
 log
 /*.jpg
 .env
-.env.*
 data/
 
 # Puppet WhatsApp Auth Folder
