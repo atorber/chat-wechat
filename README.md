@@ -19,8 +19,8 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxx # 你的openai api key
 OPENAI_API_BASE_URL=https://api.openai.com # 你的openai请求地址
 OPENAI_ENDPOINT=https://api.openai.com/v1/chat/completions # 你的openai接入点
 OPENAI_MODEL=gpt-3.5-turbo # 使用的openai模型
-ADMIN_ROOM=管理员专属群 # 管理群名称，在此群发消息时才会触发LLM指令，与ADMIN_WX至少配置一项
-ADMIN_WX=李四 # 管理员微信昵称，管理员向发消息时才会触发LLM指令，一般是你另一个微信的昵称，与ADMIN_ROOM至少配置一项
+ADMIN_ROOM_TOPIC=管理员专属群 # 管理群名称，在此群发消息时才会触发LLM指令，与ADMIN_WX_NAME至少配置一项
+ADMIN_WX_NAME=李四 # 管理员微信昵称，管理员向发消息时才会触发LLM指令，一般是你另一个微信的昵称，与ADMIN_ROOM_TOPIC至少配置一项
 ```
 
 > 国内可以购买到的openai api服务推荐 [传送门](https://www.yuque.com/atorber/oegota/rs4uk3geb4amurwb)

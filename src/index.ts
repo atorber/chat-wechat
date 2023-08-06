@@ -1,6 +1,5 @@
 #!/usr/bin/env -S node --no-warnings --loader ts-node/esm
 /**
- * Wechaty - Conversational RPA SDK for Chatbot Makers.
  *  - https://github.com/atorber/type-wechaty
  */
 import 'dotenv/config.js'
@@ -56,14 +55,14 @@ async function onMessage (msg: Message) {
   const talkerName = talker.name()
   const room = msg.room()
   const topic = await room?.topic()
-  const ADMIN_WX =  process.env['ADMIN_WX']
-  const ADMIN_ROOM =  process.env['ADMIN_ROOM']
+  const ADMIN_WX_NAME =  process.env['ADMIN_WX_NAME']
+  const ADMIN_ROOM_TOPIC =  process.env['ADMIN_ROOM_TOPIC']
 
   if (msg.text() === 'ding') {
     await msg.say('dong')
   }
 
-  if (talkerName === ADMIN_WX || (topic && topic === ADMIN_ROOM)) {
+  if (talkerName === ADMIN_WX_NAME || (topic && topic === ADMIN_ROOM_TOPIC)) {
 
     if (text[0] === '/') {
       const textArr = text.split(' ')
