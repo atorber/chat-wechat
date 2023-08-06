@@ -1,11 +1,11 @@
 {
   "name": "type-wechaty",
   "version": "0.1.0",
-  "description": "Wechaty conversational SDK getting start template & examples",
+  "description": "wechaty+ typechat实践，使用LLM控制wechaty",
   "type": "module",
   "engines": {
-    "node": ">=16",
-    "npm": ">=7"
+    "node": ">=18",
+    "npm": ">=9"
   },
   "scripts": {
     "build": "tsc",
