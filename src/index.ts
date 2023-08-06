@@ -92,12 +92,13 @@ async function onMessage (msg: Message) {
                 failList.push(curContact)
               }
             }
+            const timeString = new Date().toLocaleString()
             if (contacts.length === successList.length) {
-              await msg.say(`全部发送成功[${successList.length}]：${successList.join('、')}`)
+              await msg.say(`${talkerName} /llm >\n${timeString}\n全部发送成功[${successList.length}]：${successList.join('、')}`)
             } else if (contacts.length === failList.length) {
-              await msg.say(`全部发送失败[${failList.length}]：${failList.join('、')}`)
+              await msg.say(`${talkerName} /llm >\n${timeString}\n全部发送失败[${failList.length}]：${failList.join('、')}`)
             } else {
-              await msg.say(`发送成功[${successList.length}/${contacts.length}]：${successList.join('、')}\n发送失败[${failList.length}/${contacts.length}]：${failList.join('、')}`)
+              await msg.say(`${talkerName} /llm >\n${timeString}\n发送成功[${successList.length}/${contacts.length}]：${successList.join('、')}\n发送失败[${failList.length}/${contacts.length}]：${failList.join('、')}`)
             }
           }
           if (textMsg?.actionType === 'sendRoomMessage' && textMsg.event.rooms.length) {
@@ -115,13 +116,13 @@ async function onMessage (msg: Message) {
                 failList.push(curRoom)
               }
             }
-
+            const timeString = new Date().toLocaleString()
             if (rooms.length === successList.length) {
-              await msg.say(`全部发送成功[${successList.length}]：${successList.join('、')}`)
+              await msg.say(`${talkerName} /llm >\n${timeString}\n全部发送成功[${successList.length}]：${successList.join('、')}`)
             } else if (rooms.length === failList.length) {
-              await msg.say(`全部发送失败[${failList.length}]：${failList.join('、')}`)
+              await msg.say(`${talkerName} /llm >\n${timeString}\n全部发送失败[${failList.length}]：${failList.join('、')}`)
             } else {
-              await msg.say(`发送成功[${successList.length}/${rooms.length}]：${successList.join('、')}\n发送失败[${failList.length}/${rooms.length}]：${failList.join('、')}`)
+              await msg.say(`${talkerName} /llm >\n${timeString}\n发送成功[${successList.length}/${rooms.length}]：${successList.join('、')}\n发送失败[${failList.length}/${rooms.length}]：${failList.join('、')}`)
             }
           }
         }
