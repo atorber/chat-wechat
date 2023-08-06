@@ -52,13 +52,13 @@ npm run start
 
 ## 效果
 
-- 控制机器人向指定好友发消息
+在管理员群发送控制任务
 
-TBD
+<img src="./docs/images/1.png" alt="Image" style="width: 500px; ">
 
-- 控制机器人向指定群发消息
+自动识别并执行
 
-TBD
+<img src="./docs/images/2.png" alt="Image" style="width: 500px; ">
 
 ## 更新记录
 ### v0.0.1 (Jan 12, 2017)
