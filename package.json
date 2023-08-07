@@ -1,6 +1,6 @@
 {
   "name": "type-wechaty",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "wechaty+ typechat实践，使用LLM控制wechaty",
   "type": "module",
   "engines": {
@@ -42,5 +42,10 @@
     "check-node-version": "^4.2.1",
     "is-pr": "^2.0.0",
     "ts-node": "^10.9.1"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "npx git-scripts-pre-push"
+    }
   }
 }
