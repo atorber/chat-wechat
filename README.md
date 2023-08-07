@@ -71,7 +71,8 @@ npm run start
 <img src="./docs/images/3.png" alt="Image" style="width: 500px; ">
 
 ## 更新记录
-### v0.0.1 (Jan 12, 2017)
+
+### v0.1.0 (2023-8-6)
 
 Init version
 
