@@ -48,14 +48,20 @@ export type SendMessageAction = {
 
 export type SendRoomMessageAction = {
     // 向某个群发送消息或向某个群发通知
-    actionType: 'scheduledTasksRoomMessage';
-    event: ScheduledTasksRooMMessage;
+    actionType: 'sendRoomMessage';
+    event: RoomMessage;
 };
 
 export type ScheduledTasksMessageAction = {
     // 定时向某个好友发送消息或向某个群发通知
     actionType: 'scheduledTasksMessage';
     event: ScheduledTasksMessage;
+};
+
+export type ScheduledTasksRoomMessageAction = {
+    // 定时向某个好友发送消息或向某个群发通知
+    actionType: 'scheduledTasksRoomMessage';
+    event: ScheduledTasksRoomMessageAction;
 };
 
 // if the user types text that can not easily be understood as a calendar action, this action is used
@@ -69,7 +75,7 @@ export type Action =
     | UnknownAction
     | SendRoomMessageAction
     | SendMessageAction
-    | ScheduledTasksRooMMessage
+    | ScheduledTasksRoomMessageAction
     | ScheduledTasksMessageAction;
 
 export type MessageActions = {

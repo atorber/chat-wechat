@@ -1,6 +1,6 @@
 {
   "name": "type-wechaty",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "wechaty+ typechat实践，使用LLM控制wechaty",
   "type": "module",
   "engines": {
@@ -12,6 +12,7 @@
     "lint": "eslint \"src/*.ts\" \"src/**/*.ts\"",
     "postinstall": "check-node-version --node \">=16\" --npm \">=7\"",
     "start": "cross-env NODE_OPTIONS=\"--no-warnings --loader=ts-node/esm\" node src/index.ts",
+    "test-dev": "cross-env NODE_OPTIONS=\"--no-warnings --loader=ts-node/esm\" node test/index.ts",
     "ding": "cross-env NODE_OPTIONS=\"--no-warnings --loader=ts-node/esm\" node examples/ding-dong-bot.ts",
     "test": "npm-run-all lint test:smoke",
     "test:smoke": "cross-env NODE_OPTIONS=\"--no-warnings --loader=ts-node/esm\" tap \"tests/**/*.spec.ts\""
