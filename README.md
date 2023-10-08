@@ -1,4 +1,4 @@
-# Type Wechaty
+# Chat Wechaty
 
 ## 简介
 
