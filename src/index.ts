@@ -68,7 +68,7 @@ async function onMessage (msg: Message) {
       const textArr = text.split(' ')
       if (textArr.length) {
         const cmd = textArr[0]
-        if (cmd === '/llm' && textArr.length > 1) {
+        if (cmd === '/' && textArr.length > 1) {
           log.info('管理员或管理群消息', talkerName, topic)
           const res: MessageActions = await messageStructuring(text.replace('/llm', ''))
           log.info('LLM识别结果:', JSON.stringify(res))
@@ -78,7 +78,7 @@ async function onMessage (msg: Message) {
             const successList = []
             const failList = []
             if (textMsg?.actionType === 'sendMessage' && textMsg.event.contacts.length) {
-              const relpText = textMsg.event.text + `\n————From:${msg.talker().name()}`
+              const relpText = textMsg.event.text + `\n——From：${msg.talker().name()}`
               const contacts = textMsg.event.contacts
               for (const i in contacts) {
                 const curContact = contacts[i]
@@ -136,6 +136,21 @@ async function onMessage (msg: Message) {
         if (cmd && [ '/esc', '/exit', '/quit' ].includes(cmd)) {
           log.info('用户输入了退出指令：', cmd)
           await msg.say(`${new Date().toLocaleString()}\n${talker.name()} / >\n输入/help查询可用操作指令`)
+        }
+        if (cmd && [ '/help' ].includes(cmd)) {
+          log.info('用户输入了帮助指令：', cmd)
+          await msg.say(`${new Date().toLocaleString()}\n${talker.name()} / >
+输入以下示例内容学习如何使用，注意替换为自己的好友或群名称，格式为“/+空格+指令内容”
+
+  / 通知【超哥3、大师、大李】：马上来开会，带笔记本
+
+  / 通知 张三：下午3点到会议室开会\n/ 通知 张三、李四：下午3点到会议室开会
+
+  / 通知群【瓦力是群主、Moments、全员群】:全体成员到到会议室开会
+
+  / 通知群 Moments：全体员工下午1点到公司开会
+
+  / 每天晚上10点提醒【大李】：该睡觉啦`)
         }
       }
     }

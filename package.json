@@ -1,6 +1,6 @@
 {
-  "name": "type-wechaty",
-  "version": "0.1.2",
+  "name": "chat-wechat",
+  "version": "0.1.3",
   "description": "wechaty+ typechat实践，使用LLM控制wechaty",
   "type": "module",
   "engines": {
@@ -36,6 +36,7 @@
     "wechaty-puppet-wechat4u": "^1.14.1"
   },
   "devDependencies": {
+    "@typescript-eslint/typescript-estree": "^6.7.5",
     "@chatie/eslint-config": "^1.0.4",
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^4.6.3",
@@ -43,5 +44,10 @@
     "check-node-version": "^4.2.1",
     "is-pr": "^2.0.0",
     "ts-node": "^10.9.1"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "npx git-scripts-pre-push"
+    }
   }
 }
