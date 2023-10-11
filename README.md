@@ -4,7 +4,7 @@
 
 ChatGPT+WeChat的项目有很多，大部分项目聚焦的使用WeChat作为与ChatGPT聊天的对话窗口，包括本项目作者的另一个项目 [wechatgpt](https://github.com/atorber/wechatgpt)，Chat WeChat项目带来了一些新的探索，使用ChatGPT可以实现更多种与WeChat进行交互的可能性，他能够帮助实现更多有价值的应用。
 
-本项目使用ChatGPT控制微信机器人执行各种命令，开源项目wechaty+ [typechat](https://github.com/microsoft/TypeChat) 的结合，可是实现以下功能：
+本项目使用ChatGPT控制微信机器人执行各种命令，将WeChat打造成你的智能助理，开源项目wechaty+ [typechat](https://github.com/microsoft/TypeChat) 的结合，已实现以下功能：
 
 - 使用自然语言给指定好友或群发消息（如果你是一个日常需要协调和安排各种不同的人或群的角色，这将非常有帮助）
 
@@ -16,9 +16,13 @@ ChatGPT+WeChat的项目有很多，大部分项目聚焦的使用WeChat作为与
 
 ## 快速开始
 
-> 特别注意：[typechat](https://github.com/microsoft/TypeChat)仅支持nodejs18以上，不支持nodejs16
+1. 检查nodejs环境，环境要求：[typechat](https://github.com/microsoft/TypeChat)仅支持nodejs18以上，不支持nodejs16
 
-1. 重命名.env.example为.env,配置.env文件中相关信息
+```
+node -v
+```
+
+2. 重命名.env.example为.env,配置.env文件中相关信息
 
 ```.env
 OPENAI_API_KEY=sk-xxxxxxxxxxxx # 你的openai api key
@@ -31,14 +35,14 @@ ADMIN_WX_NAME=李四 # 管理员微信昵称，管理员向发消息时才会触
 
 > 国内可以购买到的openai api服务推荐 [传送门](https://www.yuque.com/atorber/oegota/rs4uk3geb4amurwb)
 
-2. 安装依赖及运行程序
+3. 安装依赖及运行程序
 
 ```
 npm i
 npm run start
 ```
 
-3. 扫码登录后在管理员群内发消息或使用管理员微信向机器人发消息
+4. 扫码登录后在管理员群内发消息或使用管理员微信向机器人发消息
 
 指令格式“/+空格+指令内容”，控制指令示例：
 
@@ -59,6 +63,8 @@ npm run start
 > 将好友备注为实际姓名或不容易记混淆的名字，将会极大的提升准确率
 
 ## 效果
+
+> 注意："/llm"开始的激活词已更新为"/"
 
 在管理员群发送控制任务
 
