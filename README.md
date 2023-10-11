@@ -1,4 +1,4 @@
-# Chat Wechat
+# Chat WeChat
 
 ## 简介
 
