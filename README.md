@@ -1,8 +1,8 @@
-# Chat Wechaty
+# Chat Wechat
 
 ## 简介
 
-使用LLM控制wechaty机器人执行各种命令，wechaty+ [typechat](https://github.com/microsoft/TypeChat) 的结合，可是实现以下功能：
+使用ChatGPT控制微信机器人执行各种命令，wechaty+ [typechat](https://github.com/microsoft/TypeChat) 的结合，可是实现以下功能：
 
 - 使用自然语言给指定好友或群发消息（如果你是一个日常需要协调和安排各种不同的人或群的角色，这将非常有帮助）
 
