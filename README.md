@@ -2,7 +2,9 @@
 
 ## 简介
 
-使用ChatGPT控制微信机器人执行各种命令，wechaty+ [typechat](https://github.com/microsoft/TypeChat) 的结合，可是实现以下功能：
+ChatGPT+WeChat的项目有很多，大部分项目聚焦的使用WeChat作为与ChatGPT聊天的对话窗口，包括本项目作者的另一个项目 [wechatgpt](https://github.com/atorber/wechatgpt)，Chat WeChat项目带来了一些新的探索，使用ChatGPT可以实现更多种与WeChat进行交互的可能性，他能够帮助实现更多有价值的应用。
+
+本项目使用ChatGPT控制微信机器人执行各种命令，开源项目wechaty+ [typechat](https://github.com/microsoft/TypeChat) 的结合，可是实现以下功能：
 
 - 使用自然语言给指定好友或群发消息（如果你是一个日常需要协调和安排各种不同的人或群的角色，这将非常有帮助）
 
